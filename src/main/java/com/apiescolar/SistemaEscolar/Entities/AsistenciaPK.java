@@ -1,6 +1,7 @@
 package com.apiescolar.SistemaEscolar.Entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import jakarta.persistence.*;
@@ -18,5 +19,5 @@ public class AsistenciaPK implements Serializable{
   private int alumnoId;
   
   @Column(name = "fecha")
-  private Date fecha;
+  private LocalDate fecha;
 }

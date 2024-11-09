@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Embeddable
+@Data
 public class AlumnoActividadesPK implements Serializable {
 
   @Column(name = "alumno_id")

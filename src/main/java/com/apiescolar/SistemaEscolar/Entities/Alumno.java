@@ -19,7 +19,7 @@ public class Alumno {
   @Column(name = "id", nullable=false)
   private int id;
 
-  @Column(name = "nombre")
+  @Column(name = "nombre", length=255)
   private String nombre;
 
  

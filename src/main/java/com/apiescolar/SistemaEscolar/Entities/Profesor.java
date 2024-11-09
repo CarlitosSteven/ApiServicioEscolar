@@ -29,3 +29,4 @@ public class Profesor {
   @OneToMany(mappedBy = "profesor")
   private List<Materia> materias;
 }
+

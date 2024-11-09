@@ -1,5 +1,6 @@
 package com.apiescolar.SistemaEscolar.Entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.hibernate.annotations.IdGeneratorType;
@@ -27,7 +28,7 @@ public class Actividad {
   private String descripcion;
 
   @Column(name = "fecha_entrega")
-  private Date fechaEntrega;
+  private LocalDate fechaEntrega;
 
 
 }

@@ -9,7 +9,7 @@ import lombok.Data;
 @Embeddable
 @Data
 public class AlumnoMateriaPK implements Serializable{
-
+  
   
   @Column(name = "alumno_id")
   private int alumnoId;

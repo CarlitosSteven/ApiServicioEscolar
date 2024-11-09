@@ -18,14 +18,15 @@ public class AlumnoMateria {
   
   @ManyToOne
   @MapsId("alumnoId")
-  @JoinColumn(name = "alumno_id")
+  @JoinColumn(name = "alumno_id", nullable=false)
   private Alumno alumno;
 
   @ManyToOne
   @MapsId("materiaId")
-  @JoinColumn(name = "materia_id")
+  @JoinColumn(name = "materia_id", nullable=false)
   private Materia materia;
 
+  @Column(name = "calificacion")
   private Double calificacion;
 
 }

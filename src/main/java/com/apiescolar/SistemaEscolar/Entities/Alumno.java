@@ -16,7 +16,7 @@ import lombok.Data;
 public class Alumno {
 
   @Id
-  @Column(name = "id")
+  @Column(name = "id", nullable=false)
   private int id;
 
   @Column(name = "nombre")

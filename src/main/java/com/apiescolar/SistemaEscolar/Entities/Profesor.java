@@ -16,13 +16,13 @@ import lombok.Data;
 public class Profesor {
 
   @Id
-  @Column(name = "id")
+  @Column(name = "id", nullable=false)
   private int id;
 
-  @Column(name = "nombre")
+  @Column(name = "nombre", length=255)
   private String nombre;
 
-  @Column(name = "contrasenia")
+  @Column(name = "contrasenia", length=255)
   private String contrasenia;
 
   //Se refiere a la relacion uno a muchos para materias

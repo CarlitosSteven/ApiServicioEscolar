@@ -2,11 +2,10 @@ package com.apiescolar.SistemaEscolar.Entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
-import jakarta.persistence.*;
-import lombok.Data;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.Data;
 
 @Embeddable
 @Data

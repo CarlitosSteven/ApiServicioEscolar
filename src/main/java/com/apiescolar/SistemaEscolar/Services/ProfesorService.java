@@ -1,5 +1,8 @@
 package com.apiescolar.SistemaEscolar.Services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +18,16 @@ public class ProfesorService {
   public Profesor agregarProfesor(Profesor profesor){
     return this.profesorRepository.save(profesor);
   }
+
+  public List<Profesor> obtenerProfesores(){
+    return this.profesorRepository.findAll();
+  }
+
+  public Optional<Profesor> obtenerProfesorId(Integer id){
+    return this.profesorRepository.findById(id);
+  }
   
+  public void eliminarProfesor(Integer id){
+    this.profesorRepository.deleteById(id);
+  }
 }

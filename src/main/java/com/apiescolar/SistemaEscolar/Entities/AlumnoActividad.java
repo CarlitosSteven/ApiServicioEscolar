@@ -16,7 +16,7 @@ public class AlumnoActividad {
   
   //Creando las llaves primarias compuestas en la clase AlumnoActividadesPK
   @EmbeddedId
-  AlumnoActividadesPK id;
+  AlumnoActividadPK id;
 
 
   //Relacion muchos a uno de Alumno

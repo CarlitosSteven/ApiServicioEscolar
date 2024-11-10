@@ -10,7 +10,7 @@ import lombok.Data;
 //que es una clase que puede ser usada como llave primaria
 @Embeddable
 @Data
-public class AlumnoActividadesPK implements Serializable {
+public class AlumnoActividadPK implements Serializable {
 
   @Column(name = "alumno_id")
   private int alumnoId;

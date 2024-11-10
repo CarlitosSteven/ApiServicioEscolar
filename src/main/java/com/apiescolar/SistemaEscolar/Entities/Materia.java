@@ -26,7 +26,7 @@ public class Materia {
 
   //Llave foranea referenciando al id de profesor
   @ManyToOne
-  @JoinColumn(name = "profesor_id", referencedColumnName = "id")
+  @JoinColumn(name = "profesor_id", referencedColumnName = "id", nullable=true)
   private Profesor profesor;
   
   @OneToMany(mappedBy = "materia")

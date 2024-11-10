@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import com.apiescolar.SistemaEscolar.Entities.Actividad;
 import com.apiescolar.SistemaEscolar.Entities.Alumno;
 import com.apiescolar.SistemaEscolar.Entities.AlumnoActividad;
-import com.apiescolar.SistemaEscolar.Entities.AlumnoActividadesPK;
+import com.apiescolar.SistemaEscolar.Entities.AlumnoActividadPK;
 import com.apiescolar.SistemaEscolar.Entities.AlumnoMateria;
 import com.apiescolar.SistemaEscolar.Entities.AlumnoMateriaPK;
 import com.apiescolar.SistemaEscolar.Entities.Asistencia;

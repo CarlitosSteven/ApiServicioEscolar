@@ -1,5 +1,6 @@
 package com.apiescolar.SistemaEscolar.Entities;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -26,6 +27,6 @@ public class Profesor {
 
   //Se refiere a la relacion uno a muchos para materias
   @OneToMany(mappedBy = "profesor")
-  private Set<Materia> materias;
+  private Set<Materia> materias= new HashSet<>();
 }
 

@@ -1,10 +1,12 @@
 package com.apiescolar.SistemaEscolar.Entities;
 
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -25,13 +27,16 @@ public class Materia {
   private String nombre;
 
   //Llave foranea referenciando al id de profesor
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "profesor_id", nullable=true, referencedColumnName= "id")
   private Profesor profesor;
   
-  @OneToMany(mappedBy = "materia")
-  private List<AlumnoMateria> alumnoMaterias;
+  @OneToMany(mappedBy="materia")
+  private Set<Actividad> actividades = new HashSet<>();
 
   @OneToMany(mappedBy = "materia")
-  private List<Asistencia> asistencias;
+  private Set<AlumnoMateria> alumnoMaterias= new HashSet<>();
+
+  @OneToMany(mappedBy = "materia")
+  private Set<Asistencia> asistencias= new HashSet<>();
 }

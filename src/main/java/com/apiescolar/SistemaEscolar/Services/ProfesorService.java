@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.apiescolar.SistemaEscolar.Entities.Profesor;
-import com.apiescolar.SistemaEscolar.Repositories.MateriaRepository;
 import com.apiescolar.SistemaEscolar.Repositories.ProfesorRepository;
 
 @Service
@@ -16,8 +15,6 @@ public class ProfesorService {
   @Autowired
   private ProfesorRepository profesorRepository;
 
-  @Autowired
-  private MateriaRepository materiaRepository;
 
   public Profesor agregarProfesor(Profesor profesor){
     return this.profesorRepository.save(profesor);
@@ -35,4 +32,7 @@ public class ProfesorService {
     this.profesorRepository.deleteById(id);
   }
 
+  public Profesor findById(int id) {
+    return profesorRepository.findById(id).orElse(null);  // Retorna el profesor si existe, si no, retorna null
+  }
 }

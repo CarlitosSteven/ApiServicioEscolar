@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.apiescolar.SistemaEscolar.Entities.Profesor;
 import com.apiescolar.SistemaEscolar.Services.ProfesorService;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
+
 @RestController
 public class ProfesorController {
  
@@ -22,6 +25,10 @@ public class ProfesorController {
 
   @PostMapping("/agregarProfesor")
   public Profesor agregarProfesor(@RequestBody Profesor profesor){
+    Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+    char[] charPassword = profesor.getContrasenia().toCharArray();
+    String hash = argon2.hash(1, 1024, 1 , charPassword);
+    profesor.setContrasenia(hash);
     return this.profesorService.agregarProfesor(profesor);
    
   }

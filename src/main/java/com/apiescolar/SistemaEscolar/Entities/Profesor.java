@@ -1,6 +1,6 @@
 package com.apiescolar.SistemaEscolar.Entities;
 
-import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +16,7 @@ public class Profesor {
 
   @Id
   @Column(name = "id", nullable=false)
-  private int id;
+  private Integer id;
 
   @Column(name = "nombre", length=255)
   private String nombre;
@@ -26,6 +26,6 @@ public class Profesor {
 
   //Se refiere a la relacion uno a muchos para materias
   @OneToMany(mappedBy = "profesor")
-  private List<Materia> materias;
+  private Set<Materia> materias;
 }
 

@@ -40,4 +40,5 @@ public class ProfesorController {
   public void eliminarProfesor(@PathVariable Integer id){
     this.profesorService.eliminarProfesor(id);
   }
+
 }

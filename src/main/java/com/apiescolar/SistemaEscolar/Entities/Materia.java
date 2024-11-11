@@ -1,8 +1,7 @@
 package com.apiescolar.SistemaEscolar.Entities;
 
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -32,11 +31,11 @@ public class Materia {
   private Profesor profesor;
   
   @OneToMany(mappedBy="materia")
-  private Set<Actividad> actividades = new HashSet<>();
+  private List<Actividad> actividades;
 
   @OneToMany(mappedBy = "materia")
-  private Set<AlumnoMateria> alumnoMaterias= new HashSet<>();
+  private List<AlumnoMateria> alumnoMaterias;
 
   @OneToMany(mappedBy = "materia")
-  private Set<Asistencia> asistencias= new HashSet<>();
+  private List<Asistencia> asistencias;
 }

@@ -1,5 +1,10 @@
 package com.apiescolar.SistemaEscolar.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -12,6 +17,8 @@ import lombok.Data;
 @Entity
 @Table(name = "alumnos_materias")
 @Data
+@JsonIgnoreProperties({"alumno"})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class AlumnoMateria {
 
   //PrimaryKey Compuesta
@@ -21,6 +28,7 @@ public class AlumnoMateria {
   @ManyToOne
   @MapsId("alumnoId")
   @JoinColumn(name = "alumno_id", nullable=false)
+  @JsonBackReference
   private Alumno alumno;
 
   @ManyToOne

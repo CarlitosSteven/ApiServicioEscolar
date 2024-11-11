@@ -17,4 +17,15 @@ public class AlumnoMateriaPK implements Serializable{
 
   @Column(name = "materia_id")
   private int materiaId;
+
+  public AlumnoMateriaPK(int alumnoId, int materiaId) {
+      this.alumnoId = alumnoId;
+      this.materiaId = materiaId;
+  }
+
+  public AlumnoMateriaPK() {
+  }
+
+
+
 }

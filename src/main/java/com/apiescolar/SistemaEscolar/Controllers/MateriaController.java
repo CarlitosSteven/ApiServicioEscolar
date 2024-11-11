@@ -11,14 +11,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apiescolar.SistemaEscolar.DTOS.MateriaDTO;
 import com.apiescolar.SistemaEscolar.Entities.Materia;
 import com.apiescolar.SistemaEscolar.Services.MateriaService;
+
+import jakarta.annotation.PostConstruct;
 
 @RestController
 public class MateriaController {
 
   @Autowired  
   private MateriaService materiaService;
+
+  @PostConstruct
+  public void init() {
+      System.out.println("MateriaController está cargado");
+  }
 
   @PostMapping("/agregarMateria")
   public Materia agregarMateria(@RequestBody Materia materia){
@@ -38,5 +46,10 @@ public class MateriaController {
   @DeleteMapping("/eliminarMateria/{id}")
   public void eliminarMateria(@PathVariable Integer id){
     materiaService.eliminarMateria(id);
+  }
+  @GetMapping("/profesores/{profesorId}/materias/{materiaId}/alumnos")
+  public MateriaDTO obtenerAlumnosPorMateriaYProfesor(@PathVariable int profesorId, @PathVariable int materiaId) {
+    System.out.println("Ruta alcanzada con profesorId: " + profesorId + " y materiaId: " + materiaId);
+    return materiaService.obtenerMateriaConAlumnosPorProfesor(profesorId, materiaId);
   }
 }

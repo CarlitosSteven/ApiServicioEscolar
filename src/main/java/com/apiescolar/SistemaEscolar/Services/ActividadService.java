@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.apiescolar.SistemaEscolar.DTOS.ActividadDTO;
+import com.apiescolar.SistemaEscolar.DTOS.MateriaDTO;
 import com.apiescolar.SistemaEscolar.Entities.Actividad;
 import com.apiescolar.SistemaEscolar.Entities.Materia;
 import com.apiescolar.SistemaEscolar.Repositories.ActividadRepository;
@@ -20,15 +22,26 @@ public class ActividadService {
   @Autowired
   private MateriaRepository materiaRepository;
 
-  public Actividad agregarActividad(Actividad actividad){
+  public ActividadDTO agregarActividad(ActividadDTO actividadDTO){
 
-    Materia materia = materiaRepository.findById(actividad.getMateria().getId()).orElseThrow(() -> new RuntimeException("Materia no encontrada"));
-        
-        // Asigna la materia a la actividad
+    Materia materia = materiaRepository.findById(actividadDTO.getMateria().getId())
+            .orElseThrow(() -> new RuntimeException("Materia no encontrada"));
+
+    // Crear una nueva actividad a partir del DTO
+    Actividad actividad = new Actividad();
+    actividad.setNombre(actividadDTO.getNombre());
+    actividad.setDescripcion(actividadDTO.getDescripcion());
     actividad.setMateria(materia);
+
+    // Guardar la nueva actividad en la base de datos
+    Actividad savedActividad = actividadRepository.save(actividad);
         
-        // Guarda la nueva actividad
-    return actividadRepository.save(actividad);
+    return new ActividadDTO(
+        savedActividad.getNombre(),
+        savedActividad.getDescripcion(),
+        new MateriaDTO(savedActividad.getMateria().getId(), savedActividad.getMateria().getNombre())
+    );
+
   }
 
   public List<Actividad> obtenerActividades(){

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.apiescolar.SistemaEscolar.DTOS.ActividadDTO;
 import com.apiescolar.SistemaEscolar.Entities.Actividad;
 import com.apiescolar.SistemaEscolar.Services.ActividadService;
 
@@ -21,8 +22,8 @@ public class ActividadController {
   ActividadService actividadService;
 
   @PostMapping("/agregarActividad")
-  public Actividad agregarActividad(@RequestBody Actividad actividad){
-    return this.actividadService.agregarActividad(actividad);
+  public ActividadDTO agregarActividad(@RequestBody ActividadDTO actividadDTO){
+    return actividadService.agregarActividad(actividadDTO);
   }
 
   @GetMapping("/obtenerActividades")

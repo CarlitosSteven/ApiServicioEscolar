@@ -24,7 +24,6 @@ public class CalificacionController {
         // Si todo va bien, retornar un mensaje de éxito
         return ResponseEntity.ok("Calificación calculada y guardada correctamente");
     } catch (RuntimeException e) {
-        // Si ocurre algún error (por ejemplo, no se encuentra el alumno o la materia)
         return ResponseEntity.status(400).body("Error: " + e.getMessage());
     }
   }

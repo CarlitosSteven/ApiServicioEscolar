@@ -20,19 +20,18 @@ public class AuthController {
   private JWTUtil jwtUtil; 
 
   @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam int id, @RequestParam String contrasenia) {
-      // Paso 1: Verificar que el profesor existe por su ID
-      Profesor profesor = profesorService.findById(id);
+  public ResponseEntity<String> login(@RequestParam int id, @RequestParam String contrasenia) {
+    Profesor profesor = profesorService.findById(id);
 
-      // Paso 2: Validar que la contraseña sea correcta
-      if (profesor == null || !profesor.getContrasenia().equals(contrasenia)) {
-          return ResponseEntity.status(401).body("Credenciales incorrectas");
-      }
+    // compara las contrasenas
+    if (profesor == null || !profesor.getContrasenia().equals(contrasenia)) {
+        return ResponseEntity.status(401).body("Credenciales incorrectas");
+    }
 
-      // Paso 3: Crear el token JWT
-      String token = jwtUtil.create(String.valueOf(profesor.getId()), profesor.getContrasenia());
+    //Crea el JWT
+    String token = jwtUtil.create(String.valueOf(profesor.getId()), profesor.getContrasenia());
 
-      // Paso 4: Devolver el token JWT
-      return ResponseEntity.ok(token);
+    // Paso 4: Devolver el token JWT
+    return ResponseEntity.ok(token);
   }
 }

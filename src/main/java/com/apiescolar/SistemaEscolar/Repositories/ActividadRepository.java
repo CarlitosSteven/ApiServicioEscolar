@@ -8,4 +8,5 @@ import com.apiescolar.SistemaEscolar.Entities.Actividad;
 @Repository
 public interface ActividadRepository extends JpaRepository<Actividad, Integer>{
 
+  long countByMateriaId(int materiaId);
 }

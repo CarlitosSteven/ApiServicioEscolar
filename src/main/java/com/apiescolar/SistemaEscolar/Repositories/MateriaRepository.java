@@ -15,4 +15,6 @@ public interface MateriaRepository extends JpaRepository<Materia, Integer>{
 
   Optional<Materia> findByIdAndProfesorId(int id, int profesorId);
 
+  long countById(int materiaId);
+
 }

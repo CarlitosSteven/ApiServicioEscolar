@@ -14,4 +14,6 @@ public interface AsistenciaRepository extends JpaRepository<Asistencia, Asistenc
 
   @Override
   Optional<Asistencia>findById(AsistenciaPK id);
+
+  long countByAlumnoIdAndMateriaId(int alumnoId, int materiaId);
 }

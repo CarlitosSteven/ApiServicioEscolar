@@ -1,7 +1,7 @@
 package com.apiescolar.SistemaEscolar.Services;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,12 +44,28 @@ public class ActividadService {
 
   }
 
-  public List<Actividad> obtenerActividades(){
-    return actividadRepository.findAll();
+  public List<ActividadDTO> obtenerActividades(){
+    actividadRepository.findAll();
+    List<Actividad> actividades = actividadRepository.findAll();
+    
+    // Mapear la lista de actividades a una lista de ActividadDTO
+    return actividades.stream()
+            .map(actividad -> new ActividadDTO(
+                    actividad.getNombre(), 
+                    actividad.getDescripcion(), 
+                    new MateriaDTO(actividad.getMateria().getId(), actividad.getMateria().getNombre())
+            ))
+            .collect(Collectors.toList());
   }
 
-  public Optional<Actividad> obtenerActividadId(Integer id){
-    return actividadRepository.findById(id);
+  public ActividadDTO obtenerActividadId(Integer id){
+    Actividad actividad = actividadRepository.findById(id).orElseThrow(() -> new RuntimeException("Actividad no encontrada"));
+
+    return new ActividadDTO(
+            actividad.getNombre(),
+            actividad.getDescripcion(),
+            new MateriaDTO(actividad.getMateria().getId(), actividad.getMateria().getNombre())
+    );
   }
 
   public void eliminarActividad(Integer id){

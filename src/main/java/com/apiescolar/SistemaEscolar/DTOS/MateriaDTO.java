@@ -20,6 +20,10 @@ public class MateriaDTO {
     //TODO Auto-generated constructor stub
   }
 
+    public MateriaDTO(int id) {
+        this.id = id;
+    }
+
   
 
 }
